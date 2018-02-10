@@ -12,16 +12,16 @@ pkglist="wget unzip grep sed tar ca-certificates php7 php7-cgi php7-cli php7-fas
 
 # Web程序
 # (1) phpMyAdmin（数据库管理工具）
-url_phpMyAdmin="https://files.phpmyadmin.net/phpMyAdmin/4.7.6/phpMyAdmin-4.7.6-all-languages.zip"
+url_phpMyAdmin="https://files.phpmyadmin.net/phpMyAdmin/4.7.7/phpMyAdmin-4.7.7-all-languages.zip"
 
 # (2) WordPress（使用最广泛的CMS）
-url_WordPress="https://cn.wordpress.org/wordpress-4.9.1-zh_CN.zip"
+url_WordPress="https://cn.wordpress.org/wordpress-4.9.4-zh_CN.zip"
 
 # (3) Owncloud（经典的私有云）
 url_Owncloud="https://download.owncloud.org/community/owncloud-10.0.4.zip"
 
 # (4) Nextcloud（Owncloud团队的新作，美观强大的个人云盘）
-url_Nextcloud="https://download.nextcloud.com/server/releases/nextcloud-12.0.4.zip"
+url_Nextcloud="https://download.nextcloud.com/server/releases/nextcloud-13.0.0.zip"
 
 # (5) h5ai（优秀的文件目录）
 url_h5ai="https://release.larsjung.de/h5ai/h5ai-0.29.0.zip"
