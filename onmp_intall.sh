@@ -593,7 +593,7 @@ case $input in
 8) install_netdata;;
 9) install_typecho;;
 10) install_zblog;;
-11）install_xiuno;;
+11) install_xiuno;;
 0) exit;;
 *) echo "你输入的不是 0 ~ 11 之间的!"
 break;;
