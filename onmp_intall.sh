@@ -45,6 +45,9 @@ url_Typecho="http://typecho.org/downloads/1.1-17.10.30-release.tar.gz"
 # (10) Z-Blog (体积小，速度快的PHP博客程序)
 url_Zblog="https://update.cdn.zblogcn.com/zip/Z-BlogPHP_1_5_1_1740_Zero.zip"
 
+#（11）Xiuno（轻论坛程序）
+url_Xiuno="https://bbs.xiuno.com/down/xiunobbs_4.0.2.tar.gz"
+
 # 通用环境变量获取
 get_env()
 {
@@ -575,9 +578,10 @@ cat << AAA
 (8) Netdata（详细得惊人的服务器监控面板）
 (9) Typecho (流畅的轻量级开源博客程序)
 (10) Z-Blog (体积小，速度快的PHP博客程序)
+(11)Xiuno轻论坛程序
 (0) 退出
 AAA
-read -p "输入你的选择[0-10]: " input
+read -p "输入你的选择[0-11]: " input
 case $input in
     1) install_phpmyadmin;;
 2) install_wordpress;;
@@ -589,8 +593,9 @@ case $input in
 8) install_netdata;;
 9) install_typecho;;
 10) install_zblog;;
+11）install_xiuno;;
 0) exit;;
-*) echo "你输入的不是 0 ~ 10 之间的!"
+*) echo "你输入的不是 0 ~ 11 之间的!"
 break;;
 esac
 }
@@ -967,6 +972,30 @@ install_zblog()
     onmp restart >/dev/null 2>&1
     echo "$name安装完成"
     echo "浏览器地址栏输入：$localhost:$port 即可访问"
+}
+
+########Xiuno论坛程序#########
+install_xiuno()
+{
+     # 默认配置
+     filelink=$url_Xiuno        # 下载链接
+     name="Xiuno"             # 程序名
+     dirname="xiunobbs_4.0.2"          # 解压后的目录名
+     port=56               # 端口
+     hookdir=$dirname    # 某些程序解压后不是单个目录，用这个hook解决
+     istar=true          # 是否为tar压缩包, 不是则删除此行
+
+     # 运行安装程序 
+     web_installer
+     echo "正在配置$name..."
+     chmod -R 777 /opt/wwwroot/$webdir     # 目录权限看情况使用
+
+    # 添加到虚拟主机
+     add_vhost $port $webdir
+     sed -e "s/.*\#php-fpm.*/    include       \/opt\/etc\/nginx\/conf\/php-fpm.conf\;/g" -i /opt/etc/nginx/vhost/$webdir.conf         # 添加php-fpm支持
+     onmp restart >/dev/null 2>&1
+     echo "$name安装完成"
+     echo "浏览器地址栏输入：$localhost:$port 即可访问"
 }
 
 ############# 添加到虚拟主机 #############
