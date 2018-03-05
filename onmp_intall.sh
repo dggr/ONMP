@@ -48,6 +48,9 @@ url_Zblog="https://update.cdn.zblogcn.com/zip/Z-BlogPHP_1_5_1_1740_Zero.zip"
 #（11）Xiuno（轻论坛程序）
 url_Xiuno="https://bbs.xiuno.com/down/xiunobbs_4.0.2.tar.gz"
 
+#(12)Opensns(论坛社交系统)
+url_Opensns="http://upload.opensns.cn/Uploads_Download_2018-02-10_5a7e57f780500.zip"
+
 # 通用环境变量获取
 get_env()
 {
@@ -579,6 +582,7 @@ cat << AAA
 (9) Typecho (流畅的轻量级开源博客程序)
 (10) Z-Blog (体积小，速度快的PHP博客程序)
 (11)Xiuno轻论坛程序
+(12)Opensns社交论坛
 (0) 退出
 AAA
 read -p "输入你的选择[0-11]: " input
@@ -594,6 +598,7 @@ case $input in
 9) install_typecho;;
 10) install_zblog;;
 11) install_xiuno;;
+12) install_opensns;;
 0) exit;;
 *) echo "你输入的不是 0 ~ 11 之间的!"
 break;;
@@ -984,6 +989,30 @@ install_xiuno()
      port=56               # 端口
      hookdir=$dirname    # 某些程序解压后不是单个目录，用这个hook解决
      istar=true          # 是否为tar压缩包, 不是则删除此行
+
+     # 运行安装程序 
+     web_installer
+     echo "正在配置$name..."
+     chmod -R 777 /opt/wwwroot/$webdir     # 目录权限看情况使用
+
+    # 添加到虚拟主机
+     add_vhost $port $webdir
+     sed -e "s/.*\#php-fpm.*/    include       \/opt\/etc\/nginx\/conf\/php-fpm.conf\;/g" -i /opt/etc/nginx/vhost/$webdir.conf         # 添加php-fpm支持
+     onmp restart >/dev/null 2>&1
+     echo "$name安装完成"
+     echo "浏览器地址栏输入：$localhost:$port 即可访问"
+}
+
+#########OpenSNS#############
+install_xiuno()
+{
+     # 默认配置
+     filelink=$url_Opensns    # 下载链接
+     name="Opensns"             # 程序名
+     dirname="opensns"          # 解压后的目录名
+     port=57               # 端口
+     hookdir=$dirname    # 某些程序解压后不是单个目录，用这个hook解决
+#     istar=true          # 是否为tar压缩包, 不是则删除此行
 
      # 运行安装程序 
      web_installer
