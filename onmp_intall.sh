@@ -1004,7 +1004,7 @@ install_xiuno()
 }
 
 #########OpenSNS#############
-install_xiuno()
+install_opensns()
 {
      # 默认配置
      filelink=$url_Opensns    # 下载链接
