@@ -48,8 +48,8 @@ url_Zblog="https://update.cdn.zblogcn.com/zip/Z-BlogPHP_1_5_1_1740_Zero.zip"
 #（11）Xiuno（轻论坛程序）
 url_Xiuno="https://bbs.xiuno.com/down/xiunobbs_4.0.2.tar.gz"
 
-#(12)Opensns(论坛社交系统)
-url_Opensns="http://upload.opensns.cn/Uploads_Download_2018-02-10_5a7e57f780500.zip"
+#(12)Thinksaas(社区系统)
+url_Thinksaas="https://codeload.github.com/thinksaas/ThinkSAAS/legacy.zip/master"
 
 # 通用环境变量获取
 get_env()
@@ -582,7 +582,7 @@ cat << AAA
 (9) Typecho (流畅的轻量级开源博客程序)
 (10) Z-Blog (体积小，速度快的PHP博客程序)
 (11)Xiuno轻论坛程序
-(12)Opensns社交论坛
+(12)Thinksaas社区
 (0) 退出
 AAA
 read -p "输入你的选择[0-11]: " input
@@ -598,7 +598,7 @@ case $input in
 9) install_typecho;;
 10) install_zblog;;
 11) install_xiuno;;
-12) install_opensns;;
+12) install_thinksaas;;
 0) exit;;
 *) echo "你输入的不是 0 ~ 11 之间的!"
 break;;
@@ -1003,13 +1003,13 @@ install_xiuno()
      echo "浏览器地址栏输入：$localhost:$port 即可访问"
 }
 
-#########OpenSNS#############
-install_opensns()
+#########ThinkSAAS#############
+install_thinksaas()
 {
      # 默认配置
-     filelink=$url_Opensns    # 下载链接
-     name="Opensns"             # 程序名
-     dirname="opensns"          # 解压后的目录名
+     filelink=$url_Thinksaas    # 下载链接
+     name="Thinksaas"             # 程序名
+     dirname="thinksaas"          # 解压后的目录名
      port=57               # 端口
      hookdir=$dirname    # 某些程序解压后不是单个目录，用这个hook解决
 #     istar=true          # 是否为tar压缩包, 不是则删除此行
