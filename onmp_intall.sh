@@ -12,7 +12,7 @@ pkglist="wget unzip grep sed tar ca-certificates php7 php7-cgi php7-cli php7-fas
 
 # Web程序
 # (1) phpMyAdmin（数据库管理工具）
-url_phpMyAdmin="https://files.phpmyadmin.net/phpMyAdmin/4.7.6/phpMyAdmin-4.7.6-all-languages.zip"
+url_phpMyAdmin="https://files.phpmyadmin.net/phpMyAdmin/4.7.9/phpMyAdmin-4.7.9-all-languages.zip"
 
 # (2) WordPress（使用最广泛的CMS）
 url_WordPress="https://cn.wordpress.org/wordpress-4.9.1-zh_CN.zip"
